@@ -79,7 +79,7 @@ parameters:
   displayName: Git Repository URL
   description: The URL of the repository with your Dockerfile
   required: true
-  value: https://github.com/rht-labs/openshift-selenium.git
+  value: https://github.com/jflowers/openshift-selenium.git
 - name: SOURCE_REPOSITORY_REF
   displayName: Git Reference
   description: Set this to a branch name, tag or other ref of your repository if you
