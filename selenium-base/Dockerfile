@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift:latest
+FROM openjdk18-openshift:latest
 ARG SELENIUM_VERSION="3.141.59"
 
 LABEL maintainer="deven.phillips@redhat.com" \
