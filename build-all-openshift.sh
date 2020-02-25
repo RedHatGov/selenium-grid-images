@@ -23,6 +23,8 @@ IS_CONFIRMED=$( echo ${confirmation:-n} | tr A-Z a-z )
 
 if [[ "${IS_CONFIRMED}X" == "yX" ]]; then
 
+  oc import-image centos:centos7 --from=centos:centos7 --confirm
+
   for I in selenium-base selenium-hub selenium-node-base selenium-node-chrome selenium-node-chrome-debug selenium-node-firefox selenium-node-firefox-debug
   do
     if [[ "${I}" == "selenium-base" ]]; then
