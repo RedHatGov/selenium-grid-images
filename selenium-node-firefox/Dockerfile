@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM openshift3/selenium-node-base:latest
+FROM redhatgov/selenium-node-base:latest
 ARG SELENIUM_VERSION="3.141.59"
 ARG GRID_DEBUG="false"
 

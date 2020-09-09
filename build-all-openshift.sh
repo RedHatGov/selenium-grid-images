@@ -35,6 +35,8 @@ if [[ "${IS_CONFIRMED}X" == "yX" ]]; then
   done
 
   oc process -f openshift-templates/selenium-deployment.yaml --param="SELENIUM_NAMESPACE=${NAMESPACE}" -o yaml | oc apply -f -
+
+  oc label all -l app=selenium "app.kubernetes.io/part-of"="selenium" --overwrite
 else
   echo "Aborting"
 fi

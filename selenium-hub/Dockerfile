@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM openshift3/selenium-base
+FROM redhatgov/selenium-base
 ARG SELENIUM_VERSION="3.141.59"
 
 LABEL maintainer="deven.phillips@redhat.com" \
