@@ -119,7 +119,7 @@ case $BUILD in
         docker_build "${@}"
         for tag in "${tags[@]}"; do
             for CONTAINER_IMAGE in "${CONTAINER_IMAGES[@]}"; do
-                docker push "$tag" || exit 4
+                docker push "quay.io/$QUAY_PROJECT/$CONTAINER_IMAGE:$tag" || exit 4
             done
         done
         ;;
