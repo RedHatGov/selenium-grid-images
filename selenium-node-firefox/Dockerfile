@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM redhatgov/selenium-node-base:latest
 ARG SELENIUM_VERSION="3.141.59"
+FROM quay.io/redhatgov/selenium-node-base:$SELENIUM_VERSION
 ARG GRID_DEBUG="false"
 
 LABEL maintainer="deven.phillips@redhat.com" \

@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM redhatgov/selenium-base
 ARG SELENIUM_VERSION="3.141.59"
+FROM quay.io/redhatgov/selenium-base:$SELENIUM_VERSION
 
 LABEL maintainer="deven.phillips@redhat.com" \
       description="Base node image for Selenium based on Red Hat Enterprise Linux"

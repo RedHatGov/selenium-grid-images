@@ -87,18 +87,20 @@ function docker_build () {
     if [ -n "$BUILD_DATE" ]; then
         for CONTAINER_IMAGE in "${CONTAINER_IMAGES[@]}"; do
             docker build --build-arg=BUILD_DATE=$BUILD_DATE "${@}" -t "$CONTAINER_IMAGE:$CONTAINER_TAG" -f $CONTAINER_IMAGE/Dockerfile $CONTAINER_IMAGE || exit 3
+            for tag in "${tags[@]}"; do
+                docker tag "$CONTAINER_IMAGE:$CONTAINER_TAG" "$tag"
+            done
         done
     else
         for CONTAINER_IMAGE in "${CONTAINER_IMAGES[@]}"; do
             docker build "${@}" -t "$CONTAINER_IMAGE:$CONTAINER_TAG" -f $CONTAINER_IMAGE/Dockerfile $CONTAINER_IMAGE || exit 3
+            for tag in "${tags[@]}"; do
+                docker tag "$CONTAINER_IMAGE:$CONTAINER_TAG" "$tag"
+            done
         done
     fi
 
-    for tag in "${tags[@]}"; do
-        for CONTAINER_IMAGE in "${CONTAINER_IMAGES[@]}"; do
-            docker tag "$CONTAINER_IMAGE:$CONTAINER_TAG" "$tag"
-        done
-    done
+    
 }
 
 # build
