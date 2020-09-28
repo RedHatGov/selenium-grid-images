@@ -79,23 +79,23 @@ fi
 
 # build and tag
 function docker_build () {
-    tags=("quay.io/$QUAY_PROJECT/$CONTAINER_IMAGE:$CONTAINER_TAG")
+    tags=($CONTAINER_TAG)
     if [ -n "$TAG_ALSO_LATEST" -a "$CONTAINER_TAG" != "latest" ]; then
-        tags+=("quay.io/$QUAY_PROJECT/$CONTAINER_IMAGE:latest")
+        tags+=("latest")
     fi
 
     if [ -n "$BUILD_DATE" ]; then
         for CONTAINER_IMAGE in "${CONTAINER_IMAGES[@]}"; do
             docker build --build-arg=BUILD_DATE=$BUILD_DATE "${@}" -t "$CONTAINER_IMAGE:$CONTAINER_TAG" -f $CONTAINER_IMAGE/Dockerfile $CONTAINER_IMAGE || exit 3
             for tag in "${tags[@]}"; do
-                docker tag "$CONTAINER_IMAGE:$CONTAINER_TAG" "$tag"
+                docker tag "$CONTAINER_IMAGE:$CONTAINER_TAG" "quay.io/$QUAY_PROJECT/$CONTAINER_IMAGE:$tag"
             done
         done
     else
         for CONTAINER_IMAGE in "${CONTAINER_IMAGES[@]}"; do
             docker build "${@}" -t "$CONTAINER_IMAGE:$CONTAINER_TAG" -f $CONTAINER_IMAGE/Dockerfile $CONTAINER_IMAGE || exit 3
             for tag in "${tags[@]}"; do
-                docker tag "$CONTAINER_IMAGE:$CONTAINER_TAG" "$tag"
+                docker tag "$CONTAINER_IMAGE:$CONTAINER_TAG" "quay.io/$QUAY_PROJECT/$CONTAINER_IMAGE:$tag"
             done
         done
     fi
