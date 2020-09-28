@@ -1,0 +1,13 @@
+dist: bionic
+language: minimal
+services:
+  - docker
+env:
+  - SELENIUM_VERSION=3.141.59
+script:
+  - ./build.sh -b local -d -l -t $SELENIUM_VERSION -- --build-arg=SELENIUM_VERSION=$SELENIUM_VERSION
+deploy:
+  provider: script
+  script: ./build.sh -b quay -d -l -t $SELENIUM_VERSION -- --build-arg=SELENIUM_VERSION=$SELENIUM_VERSION
+  on:
+    branch: main
