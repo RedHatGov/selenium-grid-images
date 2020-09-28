@@ -21,7 +21,7 @@ LABEL maintainer="deven.phillips@redhat.com" \
 
 USER root
 
-RUN dnf install -y firefox
+RUN yum install -y firefox
 COPY generate_config /opt/bin/generate_config
 RUN chmod 755 /opt/bin/generate_config
 
