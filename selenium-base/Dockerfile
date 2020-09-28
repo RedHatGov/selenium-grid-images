@@ -12,8 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#FROM registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift:latest
-FROM registry.access.redhat.com/ubi8/openjdk-8:latest
+FROM centos:centos7
 ARG SELENIUM_VERSION="3.141.59"
 
 LABEL maintainer="deven.phillips@redhat.com" \
@@ -26,7 +25,7 @@ RUN chmod 666 /etc/passwd && chown root:root /etc/passwd
 #==========
 # Selenium
 #==========
-RUN mkdir -p /opt/selenium/lib
+RUN yum install -y java-1.8.0-openjdk-devel unzip && mkdir -p /opt/selenium/lib
 RUN chown root:root /opt/selenium && chmod 1775 /opt/selenium
 WORKDIR /opt/selenium/lib
 RUN curl -L -o /opt/selenium/lib/selenium-server-standalone.jar https://selenium-release.storage.googleapis.com/$(echo ${SELENIUM_VERSION} | awk -F"." '{print $1"."$2}')/selenium-server-standalone-${SELENIUM_VERSION}.jar
