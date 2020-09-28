@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 # change this
-CONTAINER_IMAGES=("selenium-base", "selenium-hub", "selenium-node-base", "selenium-node-chrome", "selenium-node-firefox")
+CONTAINER_IMAGES=("selenium-base" "selenium-hub" "selenium-node-base" "selenium-node-chrome" "selenium-node-firefox")
 
 function print_usage() {
     echo "usage: $0 [(-b |--build=)(local|quay)] [(-p |--project=)QUAY_PROJECT] [(-t |--tag=)CONTAINER_TAG] [-l|--latest] [-d|--date] [-- BUILD_ARGS]" | fold -s
